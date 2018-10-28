@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Book Store</title>
+	<link type="text/css" rel="stylesheet" href="css/bootstrap.min.css"
+	th:href="@{css/bootstrap.min.css}" />
+</head>
+<body>
+	<div class="container">
+	<h1>Add Book </h1>
+	<div>
+	<form th:object="${book}" th:action="@{save}" action="#" method="post">
+
+		<label for="title"> Title :</label>
+		<input type ="text" id= "title" placeholder= "Book title" th:field="*{title}" />
+		
+		<label for="author"> Author :</label>
+		<input type ="text" id= "author" placeholder= "Author Name" th:field="*{author}" />
+		
+		<label for="year"> Year :</label>
+		<input type ="text" id= "year" placeholder= "Year"  th:field="*{year}" />
+		
+		<label for="isbn"> ISBN :</label>
+		<input type ="text" id= "isbn" placeholder= "ISBN" th:field="*{isbn}" />
+		
+		<label for="price"> Price :</label>
+		<input type ="text" id= "price" th:field="*{price}" />
+		
+		<label for="categoryList">Category :</label>
+		<select id="categoryList" th:field="*{category}" class="form-control">
+		<option th:each="category: ${categories}" th:value="${category.categoryId}" th:text="${category.name}"></option>
+		</select>
+		
+		<input type="submit" value="Save" class="btn btn-success"></input>
+	</form>
+	</div>
+	</div>
+</body>
+</html>
